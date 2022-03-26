@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Text, View, Alert} from 'react-native';
+import {Button, View, Alert} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {globalStyles} from '../theme/appTheme';
 

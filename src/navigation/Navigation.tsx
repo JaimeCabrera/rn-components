@@ -5,6 +5,7 @@ import {Home} from '../screens/Home';
 import {Animation1} from '../screens/Animation1';
 import {Animation2} from '../screens/Animation2';
 import {Switchs} from '../screens/Switchs';
+import {Alerts} from '../screens/Alerts';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export const Navigation = () => {
       <Stack.Screen name="Animation1" component={Animation1} />
       <Stack.Screen name="Animation2" component={Animation2} />
       <Stack.Screen name="Switchs" component={Switchs} />
+      <Stack.Screen name="Alerts" component={Alerts} />
     </Stack.Navigator>
   );
 };
