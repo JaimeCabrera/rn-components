@@ -1,16 +1,13 @@
 import React from 'react';
-import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
+import {FlatList, SafeAreaView, View} from 'react-native';
 import {FlatListMenuItem} from '../components/FlatListMenuItem';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {ItemSeparator} from '../components/ItemSeparator';
 import {menuItems} from '../Menu/MenuItems';
 import {globalStyles} from '../theme/appTheme';
 
 export const Home = () => {
   // hooks de navegacion
-
-  const itemSeparator = () => {
-    return <View style={styles.itemSeparator} />;
-  };
 
   return (
     <SafeAreaView>
@@ -20,17 +17,9 @@ export const Home = () => {
           renderItem={({item}) => <FlatListMenuItem menuItem={item} />}
           keyExtractor={item => item.name}
           ListHeaderComponent={() => <HeaderTitle title="Opciones de Menu" />}
-          ItemSeparatorComponent={() => itemSeparator()}
+          ItemSeparatorComponent={() => <ItemSeparator />}
         />
       </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  itemSeparator: {
-    borderBottomWidth: 1,
-    opacity: 0.3,
-    marginVertical: 5,
-  },
-});

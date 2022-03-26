@@ -8,6 +8,7 @@ import {Switchs} from '../screens/Switchs';
 import {Alerts} from '../screens/Alerts';
 import {TextInputs} from '../screens/TextInputs';
 import {Refresh} from '../screens/Refresh';
+import {SectionLists} from '../screens/SectionLists';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export const Navigation = () => {
       <Stack.Screen name="Alerts" component={Alerts} />
       <Stack.Screen name="TextInput" component={TextInputs} />
       <Stack.Screen name="Refresh" component={Refresh} />
+      <Stack.Screen name="SectionLists" component={SectionLists} />
     </Stack.Navigator>
   );
 };
