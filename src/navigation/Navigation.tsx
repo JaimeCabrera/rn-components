@@ -6,6 +6,7 @@ import {Animation1} from '../screens/Animation1';
 import {Animation2} from '../screens/Animation2';
 import {Switchs} from '../screens/Switchs';
 import {Alerts} from '../screens/Alerts';
+import {TextInputs} from '../screens/TextInputs';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export const Navigation = () => {
       <Stack.Screen name="Animation2" component={Animation2} />
       <Stack.Screen name="Switchs" component={Switchs} />
       <Stack.Screen name="Alerts" component={Alerts} />
+      <Stack.Screen name="TextInput" component={TextInputs} />
     </Stack.Navigator>
   );
 };
