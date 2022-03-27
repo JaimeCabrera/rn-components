@@ -10,6 +10,7 @@ import {TextInputs} from '../screens/TextInputs';
 import {Refresh} from '../screens/Refresh';
 import {SectionLists} from '../screens/SectionLists';
 import {Modals} from '../screens/Modals';
+import {InifiteScrolls} from '../screens/InifiteScrolls';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ export const Navigation = () => {
       <Stack.Screen name="Refresh" component={Refresh} />
       <Stack.Screen name="SectionLists" component={SectionLists} />
       <Stack.Screen name="Modals" component={Modals} />
+      <Stack.Screen name="InfiniteScroll" component={InifiteScrolls} />
     </Stack.Navigator>
   );
 };
