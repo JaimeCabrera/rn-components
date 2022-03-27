@@ -11,6 +11,7 @@ import {Refresh} from '../screens/Refresh';
 import {SectionLists} from '../screens/SectionLists';
 import {Modals} from '../screens/Modals';
 import {InifiteScrolls} from '../screens/InifiteScrolls';
+import {Slides} from '../screens/Slides';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ export const Navigation = () => {
       <Stack.Screen name="SectionLists" component={SectionLists} />
       <Stack.Screen name="Modals" component={Modals} />
       <Stack.Screen name="InfiniteScroll" component={InifiteScrolls} />
+      <Stack.Screen name="Slides" component={Slides} />
     </Stack.Navigator>
   );
 };
