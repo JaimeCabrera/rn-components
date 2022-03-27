@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {MenuItem} from '../interface/interfaces';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {ThemeContext} from '../context/theme/ThemeContext';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {MenuItem} from '../interface/interfaces';
 
 interface Props {
   menuItem: MenuItem;
@@ -10,6 +11,11 @@ interface Props {
 
 export const FlatListMenuItem = ({menuItem}: Props) => {
   const {icon, name, component} = menuItem;
+  // hook para los colores
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
+
   // hook de navegacion
   const navigation = useNavigation<any>();
   return (
@@ -18,14 +24,16 @@ export const FlatListMenuItem = ({menuItem}: Props) => {
       onPress={() => navigation.navigate(`${component}`)}>
       <View style={styles.container}>
         <View style={styles.menuItemRight}>
-          <Icon name={icon} size={25} color="cornflowerblue" />
-          <Text style={styles.menuItemText}>{name}</Text>
+          <Icon name={icon} size={25} color={colors.primary} />
+          <Text style={{...styles.menuItemText, color: colors.text}}>
+            {name}
+          </Text>
         </View>
         <View style={styles.menuItemLeft}>
           <Icon
             name="chevron-forward-outline"
             size={25}
-            color="cornflowerblue"
+            color={colors.primary}
           />
         </View>
       </View>

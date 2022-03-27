@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -12,8 +12,12 @@ import {CustomSwtch} from '../components/CustomSwtch';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {useForm} from '../hooks/useForm';
 import {globalStyles} from '../theme/appTheme';
+import {ThemeContext} from '../context/theme/ThemeContext';
 
 export const TextInputs = () => {
+  const {
+    theme: {colors, dividerColor},
+  } = useContext(ThemeContext);
   // const [form, setForm] = useState();
   const {form, onChange, isSubcribe} = useForm({
     name: '',
@@ -29,19 +33,29 @@ export const TextInputs = () => {
         <View style={globalStyles.container}>
           <HeaderTitle title="Text Inputs" />
           <TextInput
-            style={styles.textInput}
+            style={{
+              ...styles.textInput,
+              borderColor: colors.text,
+              color: colors.text,
+            }}
             placeholder="Escribe tu nombre"
             autoCorrect={false}
             autoCapitalize="words"
             onChangeText={value => onChange(value, 'name')}
+            placeholderTextColor={dividerColor}
           />
           <TextInput
-            style={styles.textInput}
+            style={{
+              ...styles.textInput,
+              borderColor: colors.text,
+              color: colors.text,
+            }}
             autoCorrect={false}
             placeholder="Escribe tu email"
             autoCapitalize="none"
             keyboardType="email-address"
             onChangeText={value => onChange(value, 'email')}
+            placeholderTextColor={dividerColor}
             keyboardAppearance="dark"
           />
           {/* ejemoploi */}
@@ -54,10 +68,15 @@ export const TextInputs = () => {
           <HeaderTitle title={JSON.stringify(form, null, 1)} />
 
           <TextInput
-            style={styles.textInput}
+            style={{
+              ...styles.textInput,
+              borderColor: colors.text,
+              color: colors.text,
+            }}
             keyboardType="phone-pad"
             placeholder="Escribe tu telefono"
             onChangeText={value => onChange(value, 'phone')}
+            placeholderTextColor={dividerColor}
           />
         </View>
       </ScrollView>
@@ -71,7 +90,6 @@ const styles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 10,
     borderRadius: 6,
-    borderColor: 'rgba(93, 109, 126,.3)',
     marginVertical: 10,
   },
   scrollView: {

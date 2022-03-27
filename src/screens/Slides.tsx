@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Dimensions,
   ImageSourcePropType,
@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {ThemeContext} from '../context/theme/ThemeContext';
 
 const {width: Windowwidth} = Dimensions.get('window');
 
@@ -42,18 +43,27 @@ const items: Slide[] = [
 export const Slides = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const navigation = useNavigation<any>();
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   const renderItem = (item: Slide) => {
     return (
-      <View style={styles.slideContainer}>
+      <View
+        style={{...styles.slideContainer, backgroundColor: colors.background}}>
         <Image source={item.img} style={styles.slideImg} />
-        <Text style={styles.slideTitle}>{item.title}</Text>
-        <Text style={styles.slideDesc}>{item.desc}</Text>
+        <Text style={{...styles.slideTitle, color: colors.primary}}>
+          {item.title}
+        </Text>
+        <Text style={{...styles.slideDesc, color: colors.text}}>
+          {item.desc}
+        </Text>
       </View>
     );
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={{...styles.container, backgroundColor: colors.background}}>
       <Carousel
         data={items}
         renderItem={({item}) => renderItem(item)}
@@ -69,12 +79,12 @@ export const Slides = () => {
           dotStyle={{
             width: 10,
             borderRadius: 10,
-            backgroundColor: 'cornflowerblue',
+            backgroundColor: colors.primary,
           }}
         />
         {activeSlide === items.length - 1 && (
           <TouchableOpacity
-            style={styles.btn}
+            style={{...styles.btn, backgroundColor: colors.primary}}
             activeOpacity={0.6}
             onPress={() => navigation.navigate('Home')}>
             <Text style={styles.btnText}>Entrar</Text>
@@ -105,7 +115,6 @@ const styles = StyleSheet.create({
   slideTitle: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: 'cornflowerblue',
   },
   slideDesc: {
     fontSize: 16,
@@ -118,7 +127,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     flexDirection: 'row',
-    backgroundColor: 'cornflowerblue',
+
     width: 100,
     height: 40,
     borderRadius: 4,

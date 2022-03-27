@@ -1,18 +1,22 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {RefreshControl, ScrollView, Text, View} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {globalStyles} from '../theme/appTheme';
+import {ThemeContext} from '../context/theme/ThemeContext';
 
 export const Refresh = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState<string>();
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
 
   const onRefresh = () => {
     setRefreshing(true);
     setTimeout(() => {
       console.log('terminamos');
       setRefreshing(false);
-      setData('hola mundoi');
+      setData('hola mundo');
     }, 3500);
   };
 
@@ -22,7 +26,7 @@ export const Refresh = () => {
         <RefreshControl
           refreshing={refreshing}
           onRefresh={onRefresh}
-          progressBackgroundColor="white"
+          progressBackgroundColor={colors.text}
           colors={['blue', 'red', 'orange']}
         />
       }>
