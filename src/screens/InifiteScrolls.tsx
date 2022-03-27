@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
-import {
-  View,
-  FlatList,
-  Text,
-  StyleSheet,
-  Image,
-  ActivityIndicator,
-} from 'react-native';
+import {View, FlatList, StyleSheet, ActivityIndicator} from 'react-native';
+import {FadeInImage} from '../components/FadeInImage';
 import {HeaderTitle} from '../components/HeaderTitle';
 // import {globalStyles} from '../theme/appTheme';
 
@@ -15,9 +9,13 @@ export const InifiteScrolls = () => {
 
   const renderItem = (item: number) => {
     return (
-      <Image
-        source={{uri: `https://picsum.photos/id/${item}/500/400`}}
-        style={styles.image}
+      // <Image
+      //   source={{uri: `https://picsum.photos/id/${item}/500/400`}}
+      //   style={styles.image}
+      // />
+      <FadeInImage
+        style={styles.img}
+        uri={`https://picsum.photos/id/${item}/500/400`}
       />
     );
   };
@@ -72,5 +70,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+  },
+  img: {
+    width: '100%',
+    height: 400,
+    borderRadius: 4,
   },
 });
